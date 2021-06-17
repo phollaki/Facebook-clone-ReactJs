@@ -1,0 +1,22 @@
+.chat {
+  flex: 0.4;
+}
+.chat__header {
+  justify-content: space-between;
+  display: flex;
+  padding: 10px;
+}
+.chat__headerIcons {
+  display: flex;
+  align-items: center;
+}
+.chat__headerIcon {
+  cursor: pointer;
+  justify-content: space-between;
+  margin-left: 20px;
+}
+.chat__headerIcon:hover {
+  background-color: white;
+  border-radius: 999px;
+  padding: 10px 30px;
+}

@@ -2,7 +2,15 @@ import "./App.css";
 import Header from "./Header";
 import Sidebar from "./Sidebar";
 import Feed from "./Feed";
-function App() {
+import Chat from "./Chat";
+import Login from "./Login";
+function App(props) {
+  const getUsername = () => {
+    user = "peti";
+  };
+  //user
+  const user = null;
+
   const me = {
     name: "Puteáni-Holl Ákos",
     picture:
@@ -10,12 +18,18 @@ function App() {
   };
   return (
     <div className="app">
-      <Header me={me} />
-      <div className="app__body">
-        <Sidebar me={me} />
-        <Feed me={me} />
-      </div>
-
+      {user !== "peti" ? (
+        <Login username={getUsername} />
+      ) : (
+        <>
+          <Header me={me} />
+          <div className="app__body">
+            <Sidebar me={me} />
+            <Feed me={me} />
+            <Chat />
+          </div>
+        </>
+      )}
       {/*Header*/}
       {/*Header*/}
       {/*Header*/}

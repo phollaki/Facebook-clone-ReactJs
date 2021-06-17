@@ -3,14 +3,13 @@
   align-items: center;
   padding: 10px;
   cursor: pointer;
-  margin: -25px 0px -25px 0px;
+  margin: -20px 0px -20px 0px;
 }
 
 .sidebarRow:hover {
   background-color: #d5d6d8;
-  border-radius: 13px;
-  width: 300px;
-  height: 60px;
+  border-radius: 15px;
+  width: 100%;
 }
 .sidebarRow > h4 {
   margin-left: 10px;

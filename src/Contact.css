@@ -1,0 +1,23 @@
+.contact {
+  display: flex;
+}
+.contact__avatar {
+  height: 30px !important;
+  width: 30px !important;
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+  border-radius: 60px;
+  transition: transform 100ms ease-in;
+}
+.contact > p {
+  font-weight: bold;
+  font-size: 15;
+  margin-left: 10px;
+}
+.contact:hover {
+  border-radius: 999px;
+  box-shadow: 0px 5px 7px -7px rgba(0, 0, 0, 0.75);
+  transform: scale(1.2);
+  cursor: pointer;
+}
