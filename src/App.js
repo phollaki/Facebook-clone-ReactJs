@@ -4,12 +4,15 @@ import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import Chat from "./Chat";
 import Login from "./Login";
-function App(props) {
+function App() {
+  let user = null;
+
   const getUsername = () => {
     user = "peti";
+    console.log("App réteg");
+    console.log(user);
   };
   //user
-  const user = null;
 
   const me = {
     name: "Puteáni-Holl Ákos",
