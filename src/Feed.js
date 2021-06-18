@@ -3,38 +3,34 @@ import "./Feed.css";
 import MessageSender from "./MessageSender";
 import StoryReel from "./StoryReel";
 import Post from "./Post";
+import { useState } from "react";
+import db from "./firebase";
+import { useEffect } from "react";
 function Feed(props) {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    db.collection("posts")
+      .orderBy("timestamp", "desc")
+      .onSnapshot((snapshot) =>
+        setPosts(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })))
+      );
+  }, []);
   return (
     <div className="feed">
       <StoryReel me={props.me} />
       <MessageSender me={props.me} />
-      <Post
-        profilePic={props.me.picture}
-        message={"What's up guys"}
-        timestamp={"2021.06.16"}
-        username={props.me.name}
-        image={
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bicycle-on-grassy-field-in-park-royalty-free-image-1589916167.jpg?crop=0.721xw:0.541xh;0,0.317xh&resize=1200:*"
-        }
-      />
-      <Post
-        profilePic={props.me.picture}
-        message={"What's up guys"}
-        timestamp={"2021.06.16"}
-        username={props.me.name}
-        image={
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bicycle-on-grassy-field-in-park-royalty-free-image-1589916167.jpg?crop=0.721xw:0.541xh;0,0.317xh&resize=1200:*"
-        }
-      />
-      <Post
-        profilePic={props.me.picture}
-        message={"What's up guys"}
-        timestamp={"2021.06.16"}
-        username={props.me.name}
-        image={
-          "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/bicycle-on-grassy-field-in-park-royalty-free-image-1589916167.jpg?crop=0.721xw:0.541xh;0,0.317xh&resize=1200:*"
-        }
-      />
+
+      {posts.map((post) => (
+        <Post
+          key={post.id}
+          profilePic={post.data.profilePic}
+          message={post.data.message}
+          username={post.data.username}
+          timestamp={post.data.timestamp}
+          image={post.data.image}
+        />
+      ))}
     </div>
   );
 }

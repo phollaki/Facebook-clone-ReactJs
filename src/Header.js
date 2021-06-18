@@ -36,8 +36,8 @@ function Header(props) {
       </div>
       <div className="header__right">
         <div className="header__info">
-          <Avatar src={props.me.picture} />
-          <h4>{props.me.name}</h4>
+          <Avatar src={props.me.photoURL} />
+          <h4>{props.me.displayName}</h4>
         </div>
         <IconButton>
           <AddIcon />

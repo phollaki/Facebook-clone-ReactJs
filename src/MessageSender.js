@@ -5,6 +5,8 @@ import VideoCallIcon from "@material-ui/icons/VideoCall";
 import PhotoLibraryIcon from "@material-ui/icons/PhotoLibrary";
 import MoodIcon from "@material-ui/icons/Mood";
 import "./MessageSender.css";
+import db from "./firebase";
+import firebase from "firebase";
 function MessageSender(props) {
   const [enteredText, setEnteredText] = useState("");
   const [input, setInput] = useState("");
@@ -12,20 +14,27 @@ function MessageSender(props) {
   const submitEventHandler = (e) => {
     e.preventDefault();
     //some db stuff
+    db.collection("posts").add({
+      message: enteredText,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+      profilePic: props.me.photoURL,
+      username: props.me.displayName,
+      image: input,
+    });
     setEnteredText("");
     setInput("");
   };
   return (
     <div className="messageSender">
       <div className="messageSender__top">
-        <Avatar src={props.me.picture} />
+        <Avatar src={props.me.photoURL} />
         <form>
           <input
             value={enteredText}
             onChange={(e) => setEnteredText(e.target.value)}
             className="messageSender__input"
             type="text"
-            placeholder={"What's on your mind " + props.me.name + "?"}
+            placeholder={"What's on your mind " + props.me.displayName + "?"}
           ></input>
           <input
             type="text"

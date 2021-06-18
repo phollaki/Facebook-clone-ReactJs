@@ -6,9 +6,9 @@ function StoryReel(props) {
   return (
     <div className="storyReel">
       <Story
-        avatar={props.me.picture}
+        avatar={props.me.photoURL}
         picture="https://images.unsplash.com/photo-1518173946687-a4c8892bbd9f?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZnJlc2h8ZW58MHx8MHx8&ixlib=rb-1.2.1&w=1000&q=80"
-        name={props.me.name}
+        name={props.me.displayName}
       />
       <Story
         avatar="https://www.shutterstock.com/blog/wp-content/uploads/sites/5/2019/07/Man-Silhouette.jpg"
