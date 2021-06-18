@@ -4,13 +4,12 @@ import Sidebar from "./Sidebar";
 import Feed from "./Feed";
 import Chat from "./Chat";
 import Login from "./Login";
+import { useStateValue } from "./StateProvider";
 function App() {
-  let user = null;
+  const [{ user }, dispatch] = useStateValue();
 
   const getUsername = () => {
-    user = "peti";
     console.log("App réteg");
-    console.log(user);
   };
   //user
 
@@ -21,7 +20,7 @@ function App() {
   };
   return (
     <div className="app">
-      {user !== "peti" ? (
+      {!user ? (
         <Login username={getUsername} />
       ) : (
         <>
